@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+// import 'package:google_fonts/google_fonts.dart';
 
 class MyThemeData {
   static const Color goldColor = Color(0xFFB7935F);
   static const Color darkColor = Color(0xFF141A2E);
   static const Color yellowColor = Color(0xFFFAcc1D);
   static ThemeData lightTheme = ThemeData(
+    // fontFamily: GoogleFonts.elMessiri().fontFamily,
     primaryColor: goldColor,
     colorScheme: ColorScheme.fromSeed(
       seedColor: const Color(0xffB7935F),
@@ -80,6 +82,7 @@ class MyThemeData {
   );
 
   static ThemeData darkTheme = ThemeData(
+    // fontFamily: GoogleFonts.elMessiri().fontFamily,
     primaryColor: darkColor,
     colorScheme: ColorScheme.fromSeed(
       seedColor: darkColor,
