@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/providers/settings_provider/settings_provider.dart';
 import 'package:provider/provider.dart';
 
@@ -58,7 +59,7 @@ class _ThemeBottomSheetState extends State<ThemeBottomSheet> {
         Icon(
           Icons.check,
           size: 30,
-          weight: 100,
+          weight: 100.w,
           color: Theme.of(context).colorScheme.primary,
         ),
       ],

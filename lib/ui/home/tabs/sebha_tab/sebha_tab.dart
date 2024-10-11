@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/utils/image_utils.dart';
 
 class SebhaTab extends StatefulWidget {
-  SebhaTab({super.key});
+  const SebhaTab({super.key});
 
   @override
   State<SebhaTab> createState() => _SebhaTabState();
@@ -11,7 +12,7 @@ class SebhaTab extends StatefulWidget {
 class _SebhaTabState extends State<SebhaTab>
     with SingleTickerProviderStateMixin {
   int counter = 0;
-  List<String> SebhaWords = ['سبحان الله', 'الحمد لله', 'الله اكبر'];
+  List<String> sebhaWords = ['سبحان الله', 'الحمد لله', 'الله اكبر'];
   int index = 0;
   late AnimationController _controller;
 
@@ -20,7 +21,7 @@ class _SebhaTabState extends State<SebhaTab>
     super.initState();
     // Initialize the AnimationController with duration and vsync
     _controller = AnimationController(
-      duration: Duration(milliseconds: 500),
+      duration: const Duration(milliseconds: 500),
       vsync: this, // Ensure vsync is provided by SingleTickerProviderStateMixin
     );
     super.initState();
@@ -53,7 +54,7 @@ class _SebhaTabState extends State<SebhaTab>
             ),
           ),
           SizedBox(
-            height: 20,
+            height: 20.h,
           ),
           Expanded(
             flex: 1,
@@ -62,7 +63,7 @@ class _SebhaTabState extends State<SebhaTab>
                 Text('عدد التسبيحات',
                     style: Theme.of(context).textTheme.labelMedium),
                 Container(
-                  padding: EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(10),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     color: Theme.of(context).colorScheme.secondary,
@@ -70,22 +71,23 @@ class _SebhaTabState extends State<SebhaTab>
                   child: Text(
                     '$counter',
                     style: Theme.of(context).textTheme.labelMedium!.copyWith(
-                          fontSize: 12,
+                          fontSize: 12.sp,
                           fontWeight: FontWeight.w400,
                         ),
                   ),
                 ),
                 SizedBox(
-                  height: 20,
+                  height: 20.h,
                 ),
                 Container(
-                  padding: EdgeInsets.symmetric(vertical: 8, horizontal: 12),
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     color: Theme.of(context).colorScheme.secondary,
                   ),
                   child: Text(
-                    SebhaWords[index],
+                    sebhaWords[index],
                     style: Theme.of(context).textTheme.labelMedium,
                   ),
                 ),
@@ -102,7 +104,7 @@ class _SebhaTabState extends State<SebhaTab>
       counter++;
       if (counter % 34 == 0) {
         counter = 1;
-        index = (index + 1) % SebhaWords.length;
+        index = (index + 1) % sebhaWords.length;
       }
     });
     _controller.forward(from: 0.0);

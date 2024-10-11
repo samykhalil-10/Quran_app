@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/ui/home/tabs/setting_tab/language_bottom_sheet.dart';
 import 'package:islami/ui/home/tabs/setting_tab/theme_bottom_sheet.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -32,7 +33,7 @@ class _SettingsTabsState extends State<SettingsTabs> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(18),
                     border: Border.all(
-                        color: Theme.of(context).dividerColor, width: 3)),
+                        color: Theme.of(context).dividerColor, width: 3.w)),
                 child: Text(
                   AppLocalizations.of(context)!.light,
                   style: Theme.of(context).textTheme.labelSmall,
@@ -52,7 +53,7 @@ class _SettingsTabsState extends State<SettingsTabs> {
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(18),
                     border: Border.all(
-                        color: Theme.of(context).dividerColor, width: 3)),
+                        color: Theme.of(context).dividerColor, width: 3.w)),
                 child: Text(
                   AppLocalizations.of(context)!.english,
                   style: Theme.of(context).textTheme.labelSmall,
@@ -66,14 +67,14 @@ class _SettingsTabsState extends State<SettingsTabs> {
   void showLanguageBottomSheet() {
     showModalBottomSheet(
       context: context,
-      builder: (context) => LanguageBottomSheet(),
+      builder: (context) => const LanguageBottomSheet(),
     );
   }
 
   void showThemeBottomSheet() {
     showModalBottomSheet(
       context: context,
-      builder: (context) => ThemeBottomSheet(),
+      builder: (context) => const ThemeBottomSheet(),
     );
   }
 }

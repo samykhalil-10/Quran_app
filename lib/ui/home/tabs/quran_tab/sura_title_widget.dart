@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/ui/home/tabs/quran_tab/quran_details/quran_details.dart';
 
 class SuraTitleWidget extends StatelessWidget {
@@ -32,7 +33,7 @@ class SuraTitleWidget extends StatelessWidget {
               style: Theme.of(context).textTheme.titleMedium,
             )),
             Container(
-              width: 2,
+              width: 2.w,
               color: Theme.of(context).dividerColor,
             ),
             Expanded(

@@ -29,12 +29,15 @@ class _HomeScreenState extends State<HomeScreen> {
       decoration: BoxDecoration(
         image: DecorationImage(
           fit: BoxFit.fill,
-          image: AssetImage(
-              getImagePathName(imageName: provider.getBackgroundImageName())),
+          image: AssetImage(getImagePathName(
+              imageName: provider.currentTheme == ThemeMode.light
+                  ? 'main_background.png'
+                  : 'main_background_dark.png')),
         ),
       ),
       child: Scaffold(
         appBar: AppBar(
+          elevation: 0,
           title: Text(
             AppLocalizations.of(context)!.app_title,
           ),
@@ -71,7 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 label: AppLocalizations.of(context)!.radio,
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.settings),
+                icon: const Icon(Icons.settings),
                 label: AppLocalizations.of(context)!.setting,
               ),
             ],
@@ -84,9 +87,9 @@ class _HomeScreenState extends State<HomeScreen> {
 }
 
 List<Widget> tabs = [
-  QuranTab(),
-  HadethTab(),
-  SebhaTab(),
-  RadioTab(),
-  SettingsTabs(),
+  const QuranTab(),
+  const HadethTab(),
+  const SebhaTab(),
+  const RadioTab(),
+  const SettingsTabs(),
 ];

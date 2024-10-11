@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/ui/home/tabs/hadeth_tab/hadeth_title_widget.dart';
 import 'package:islami/utils/image_utils.dart';
 
@@ -34,10 +35,10 @@ class _HadethTabState extends State<HadethTab> {
                             hadethItem: hadethList[index],
                           ),
                       separatorBuilder: (context, index) => Container(
-                            width: double.infinity,
-                            height: 2,
+                            width: double.infinity.w,
+                            height: 2.h,
                             color: Theme.of(context).dividerColor,
-                            margin: EdgeInsets.symmetric(horizontal: 28),
+                            margin: const EdgeInsets.symmetric(horizontal: 28),
                           ),
                       itemCount: hadethList.length),
                 )

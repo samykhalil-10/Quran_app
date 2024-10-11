@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:islami/providers/settings_provider/settings_provider.dart';
 import 'package:islami/ui/home/tabs/quran_tab/sura_title_widget.dart';
 import 'package:islami/utils/image_utils.dart';
+import 'package:provider/provider.dart';
 
-class QuranTab extends StatelessWidget {
-  QuranTab({super.key});
+class QuranTab extends StatefulWidget {
+  const QuranTab({super.key});
 
+  @override
+  State<QuranTab> createState() => _QuranTabState();
+}
+
+class _QuranTabState extends State<QuranTab> {
   List<String> suraNames = [
     "الفاتحه",
     "البقرة",
@@ -122,6 +130,7 @@ class QuranTab extends StatelessWidget {
     "الفلق",
     "الناس"
   ];
+
   List<int> versesNumber = [
     7,
     286,
@@ -239,8 +248,126 @@ class QuranTab extends StatelessWidget {
     6
   ];
 
+  List<String> suraNamesEnglish = [
+    "Al-Fatiha",
+    "Al-Baqarah",
+    "Aal-E-Imran",
+    "An-Nisa",
+    "Al-Ma'idah",
+    "Al-An'am",
+    "Al-A'raf",
+    "Al-Anfal",
+    "At-Tawbah",
+    "Yunus",
+    "Hud",
+    "Yusuf",
+    "Ar-Ra'd",
+    "Ibrahim",
+    "Al-Hijr",
+    "An-Nahl",
+    "Al-Isra",
+    "Al-Kahf",
+    "Maryam",
+    "Ta-Ha",
+    "Al-Anbiya",
+    "Al-Hajj",
+    "Al-Mu'minun",
+    "An-Nur",
+    "Al-Furqan",
+    "Ash-Shu'ara",
+    "An-Naml",
+    "Al-Qasas",
+    "Al-Ankabut",
+    "Ar-Rum",
+    "Luqman",
+    "As-Sajda",
+    "Al-Ahzab",
+    "Saba",
+    "Fatir",
+    "Ya-Sin",
+    "As-Saffat",
+    "Sad",
+    "Az-Zumar",
+    "Ghafir",
+    "Fussilat",
+    "Ash-Shura",
+    "Az-Zukhruf",
+    "Ad-Dukhan",
+    "Al-Jathiya",
+    "Al-Ahqaf",
+    "Muhammad",
+    "Al-Fath",
+    "Al-Hujurat",
+    "Qaf",
+    "Adh-Dhariyat",
+    "At-Tur",
+    "An-Najm",
+    "Al-Qamar",
+    "Ar-Rahman",
+    "Al-Waqi'a",
+    "Al-Hadid",
+    "Al-Mujadila",
+    "Al-Hashr",
+    "Al-Mumtahina",
+    "As-Saff",
+    "Al-Jumu'a",
+    "Al-Munafiqun",
+    "At-Taghabun",
+    "At-Talaq",
+    "At-Tahrim",
+    "Al-Mulk",
+    "Al-Qalam",
+    "Al-Haaqqa",
+    "Al-Ma'arij",
+    "Nuh",
+    "Al-Jinn",
+    "Al-Muzzammil",
+    "Al-Muddathir",
+    "Al-Qiyama",
+    "Al-Insan",
+    "Al-Mursalat",
+    "An-Naba",
+    "An-Nazi'at",
+    "Abasa",
+    "At-Takwir",
+    "Al-Infitar",
+    "Al-Mutaffifin",
+    "Al-Inshiqaq",
+    "Al-Burooj",
+    "At-Tariq",
+    "Al-A'la",
+    "Al-Ghashiya",
+    "Al-Fajr",
+    "Al-Balad",
+    "Ash-Shams",
+    "Al-Lail",
+    "Ad-Duha",
+    "Ash-Sharh",
+    "At-Tin",
+    "Al-Alaq",
+    "Al-Qadr",
+    "Al-Bayyina",
+    "Az-Zalzala",
+    "Al-Adiyat",
+    "Al-Qari'a",
+    "At-Takathur",
+    "Al-Asr",
+    "Al-Humaza",
+    "Al-Fil",
+    "Quraish",
+    "Al-Ma'un",
+    "Al-Kawthar",
+    "Al-Kafirun",
+    "An-Nasr",
+    "Al-Masad",
+    "Al-Ikhlas",
+    "Al-Falaq",
+    "An-Nas"
+  ];
+
   @override
   Widget build(BuildContext context) {
+    var authProvider = Provider.of<SettingsProvider>(context);
     return Column(
       children: [
         Expanded(
@@ -252,23 +379,51 @@ class QuranTab extends StatelessWidget {
           margin: const EdgeInsets.symmetric(horizontal: 30),
           alignment: Alignment.center,
           decoration: BoxDecoration(
-              border: Border.symmetric(
-                  horizontal: BorderSide(
-                      color: Theme.of(context).dividerColor, width: 2))),
-          child: Text(
-            AppLocalizations.of(context)!.chapter_name,
-            style: Theme.of(context).textTheme.labelMedium,
+            border: Border.symmetric(
+              horizontal:
+                  BorderSide(color: Theme.of(context).dividerColor, width: 2.w),
+            ),
           ),
+          child: IntrinsicHeight(
+            child: Row(
+              children: [
+                Expanded(
+                  child: Text(
+                    AppLocalizations.of(context)!.chapter_name,
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.labelMedium,
+                  ),
+                ),
+                Container(
+                  width: 2.w,
+                  color: Theme.of(context).dividerColor,
+                ),
+                Expanded(
+                  child: Text(
+                    AppLocalizations.of(context)!.verses_number,
+                    textAlign: TextAlign.center,
+                    style: Theme.of(context).textTheme.labelMedium,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          // child: Text(
+          //   AppLocalizations.of(context)!.chapter_name,
+          //   style: Theme.of(context).textTheme.labelMedium,
+          // ),
         ),
         Expanded(
           flex: 2,
           child: ListView.separated(
               itemBuilder: (context, index) => SuraTitleWidget(
-                  suraTitle: suraNames[index],
+                  suraTitle: authProvider.currentLang == const Locale('ar')
+                      ? suraNames[index]
+                      : suraNamesEnglish[index],
                   numOfVerse: versesNumber[index].toString(),
                   index: index),
               separatorBuilder: (context, index) => Divider(
-                    height: 0,
+                    height: 0.h,
                     endIndent: 30,
                     indent: 30,
                     color: Theme.of(context).disabledColor,
