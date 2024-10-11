@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:islami/providers/settings_provider/settings_provider.dart';
 import 'package:islami/ui/home/home_screen.dart';
+import 'package:provider/provider.dart';
 
 class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
@@ -8,14 +11,17 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Future.delayed(Duration(seconds: 3), () {
+    var provide = Provider.of<SettingsProvider>(context);
+    Future.delayed(const Duration(seconds: 3), () {
       Navigator.pushReplacementNamed(context, HomeScreen.routeName);
     });
     return Scaffold(
       body: Image.asset(
-        'assets/images/splash.png',
-        width: double.infinity,
-        height: double.infinity,
+        provide.currentTheme == ThemeMode.light
+            ? 'assets/images/splash.png'
+            : 'assets/images/splash_dark.png',
+        width: double.infinity.w,
+        height: double.infinity.h,
         fit: BoxFit.fill,
       ),
     );

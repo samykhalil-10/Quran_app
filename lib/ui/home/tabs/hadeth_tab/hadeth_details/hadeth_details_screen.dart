@@ -18,12 +18,15 @@ class HadethDetailsScreen extends StatelessWidget {
       decoration: BoxDecoration(
         image: DecorationImage(
           fit: BoxFit.fill,
-          image: AssetImage(
-              getImagePathName(imageName: provider.getBackgroundImageName())),
+          image: AssetImage(getImagePathName(
+              imageName: provider.currentTheme == ThemeMode.light
+                  ? 'main_background.png'
+                  : 'main_background_dark.png')),
         ),
       ),
       child: Scaffold(
         appBar: AppBar(
+          elevation: 0,
           title: Text(hadethItem.title),
         ),
         body: ClipRRect(

@@ -1,9 +1,12 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:islami/core/services/api_manger/api.dart';
+import 'package:provider/provider.dart';
+
+import '../../../../providers/settings_provider/settings_provider.dart';
 
 class RadioTab extends StatefulWidget {
-  RadioTab({super.key});
+  const RadioTab({super.key});
 
   @override
   State<RadioTab> createState() => _RadioTabState();
@@ -16,6 +19,7 @@ class _RadioTabState extends State<RadioTab> {
 
   @override
   Widget build(BuildContext context) {
+    var provider = Provider.of<SettingsProvider>(context);
     var theme = Theme.of(context);
     return FutureBuilder(
         future: ApiManger.getRadio(),
@@ -50,7 +54,9 @@ class _RadioTabState extends State<RadioTab> {
                       icon: Icon(
                         Icons.skip_previous,
                         size: 40,
-                        color: theme.primaryColor,
+                        color: provider.currentTheme == ThemeMode.light
+                            ? theme.colorScheme.primary
+                            : theme.colorScheme.primary,
                       )),
                   IconButton(
                       onPressed: () async {
@@ -66,7 +72,9 @@ class _RadioTabState extends State<RadioTab> {
                       icon: Icon(
                         isPlay ? Icons.stop : Icons.play_arrow,
                         size: 50,
-                        color: theme.primaryColor,
+                        color: provider.currentTheme == ThemeMode.light
+                            ? theme.colorScheme.primary
+                            : theme.colorScheme.primary,
                       )),
                   IconButton(
                       onPressed: () async {
@@ -81,7 +89,9 @@ class _RadioTabState extends State<RadioTab> {
                       icon: Icon(
                         Icons.skip_next,
                         size: 40,
-                        color: theme.primaryColor,
+                        color: provider.currentTheme == ThemeMode.light
+                            ? theme.colorScheme.primary
+                            : theme.colorScheme.primary,
                       )),
                 ],
               ),

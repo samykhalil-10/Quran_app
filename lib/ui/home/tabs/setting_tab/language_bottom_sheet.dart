@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:islami/providers/settings_provider/settings_provider.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LanguageBottomSheet extends StatefulWidget {
   const LanguageBottomSheet({super.key});
@@ -21,7 +22,7 @@ class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
         children: [
           InkWell(
               onTap: () {
-                provider.changeAppLanguage('en');
+                provider.changeLanguage('en');
               },
               child: provider.currentLang == 'en'
                   ? buildSelectedThemeItem(
@@ -33,7 +34,7 @@ class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
           ),
           InkWell(
               onTap: () {
-                provider.changeAppLanguage('ar');
+                provider.changeLanguage('ar');
               },
               child: provider.currentLang == 'ar'
                   ? buildSelectedThemeItem(AppLocalizations.of(context)!.arabic)
@@ -59,7 +60,7 @@ class _LanguageBottomSheetState extends State<LanguageBottomSheet> {
         Icon(
           Icons.check,
           size: 30,
-          weight: 100,
+          weight: 100.w,
           color: Theme.of(context).colorScheme.primary,
         ),
       ],
